@@ -3,6 +3,7 @@ package marketwebsocketclient
 import (
 	"encoding/json"
 	"fmt"
+
 	"github.com/huobirdcenter/huobi_golang/logging/applogger"
 	"github.com/huobirdcenter/huobi_golang/pkg/client/websocketclientbase"
 	"github.com/huobirdcenter/huobi_golang/pkg/model/market"
@@ -49,7 +50,7 @@ func (p *Last24hCandlestickWebSocketClient) Subscribe(symbol string, clientId st
 // Unsubscribe latest 24 market stats
 func (p *Last24hCandlestickWebSocketClient) UnSubscribe(symbol string, clientId string) {
 	topic := fmt.Sprintf("market.%s.detail", symbol)
-	unsub := fmt.Sprintf("{\"unsub\": \"%s\",\"id\": \"%s\" }", symbol, clientId)
+	unsub := fmt.Sprintf("{\"unsub\": \"%s\",\"id\": \"%s\" }", topic, clientId)
 
 	p.Send(unsub)
 
